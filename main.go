@@ -11,9 +11,14 @@ import (
 
 func main() {
 	fmt.Println("sms-survey-demo-Back")
-	fmt.Println("FOO:", os.Getenv("FOO"))
-	fmt.Println("TWILIO_SID:", os.Getenv("TWILIO_SID"))
-	fmt.Println("FOO:", os.Getenv("FOO"))
+	//fmt.Println("TWILIO_SID:", os.Getenv("TWILIO_SID"))
+	//fmt.Println("TWILIO_TOKEN:", os.Getenv("TWILIO_TOKEN"))
+	if os.Getenv("TWILIO_SID") == "" || os.Getenv("TWILIO_TOKEN") == "" {
+		fmt.Println("TWILIO_SID and TWILIO_TOKEN environment variables must be set.")
+		fmt.Println("this can be done inside .env if using VSCode IDE")
+		return
+	}
+
 	e := echo.New()
 
 	//CORS
